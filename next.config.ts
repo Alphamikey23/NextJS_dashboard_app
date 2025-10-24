@@ -1,9 +1,10 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  experimental: {
-    ppr: 'incremental'
-  }
+  cacheComponents: true,
+  // experimental: {
+  //   ppr: 'incremental'
+  // }
   /* config options here */
 };
 
