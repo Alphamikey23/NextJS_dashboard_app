@@ -12,7 +12,7 @@ export default function Search() {
   const { replace } = useRouter();
 
 
-  const handleSearch = useDebouncedCallback((term) => {
+  function handleSearch(term: string) {
     console.log(`Searching for ${term}  ... `);
 
     const params = new URLSearchParams(searchParams);
@@ -25,7 +25,7 @@ export default function Search() {
       params.delete('query');
     }
     replace(`${pathname}?${params.toString()}`);
-  },300);
+  }
   return (
     <div className="relative flex flex-1 flex-shrink-0">
       <label htmlFor="search" className="sr-only">
