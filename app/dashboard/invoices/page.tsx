@@ -11,17 +11,14 @@ import { Suspense } from "react";
 import { fetchInvoicesPages } from '@/app/lib/data';
 
 export default async function Page(props: {
-    searchParams?: Promise<{
+    searchParams?: {
         query?: string;
         page?: string;
-    }>;
+    };
 }) {
-    // 'use cache'
-      
-    const searchParams = await props.searchParams;    
-    
-    
-    const query = searchParams?.query || '';
+    const searchParams = await props.searchParams;
+
+    const query = await searchParams?.query || '';
     const currentPage = Number(searchParams?.page) || 1;
 
     const totalPages = await fetchInvoicesPages(query);
@@ -29,7 +26,7 @@ export default async function Page(props: {
     
 
     return (
-        <Suspense>
+        
         <div className="w-full">
             <div className="flex w-full items-center justify-between">
                 <h1 className={`${roboto.className} text-2xl`}>Invoices</h1>
@@ -50,7 +47,7 @@ export default async function Page(props: {
             </Suspense>
         </div>
         </div>
-        </Suspense>
+        
         
     )
 }
