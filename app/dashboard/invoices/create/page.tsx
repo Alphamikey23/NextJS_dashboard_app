@@ -2,11 +2,12 @@ import Form from '@/app/ui/invoices/create-form';
 import Breadcrumbs from '@/app/ui/invoices/breadcrumbs';
 import { fetchCustomers } from '@/app/lib/data';
 import { cacheTag, cacheLife } from 'next/cache'
+import { Suspense } from 'react';
+
 
 
 export default async function page() {
-    'use cache';
-    
+
     
         const customers = await fetchCustomers();
 
@@ -28,9 +29,10 @@ export default async function page() {
             />
             <Form customers={customers} />
         </main>
+        
 
 
         
         
-    )
+    );
 }
