@@ -5,6 +5,11 @@ import { z } from 'zod';
 import type { User } from '@/app/lib/definitions';
 import bcrypt from 'bcrypt';
 import postgres from 'postgres';
+import {
+    betterAuth
+} from 'better-auth';
+import { classicNameResolver } from 'typescript';
+
 
 
 
@@ -42,3 +47,28 @@ export const { auth, signIn, signOut} = NextAuth({...authConfig,
     }),
 ],
 });
+
+
+//better-auth setup
+// export const auth1 = betterAuth({
+//     emailAndPassword: {
+//         enabled: true,
+//         async sendResetPassword(data,request) {}
+//     },
+// },
+// socialProviders: {
+//     google: {
+//         clientId: process.env.GOOGLE_CLIENT_ID!,
+//         clientSecret: process.env.GOOGLE_CLIENT_SECRET!
+//     },
+//     github: {
+//         clientID: process.env.GITHUB_CLIENT_ID!,
+//         clientSecret: process.env.GITHUB_CLIENT_SECRET!
+//     }
+//     linkedin: {
+//         clientId: process.env.LINKEDIN_CLIENT_ID!,
+//         clientSecret: process.env.LINKEDIN_CLIENT_SECRET!
+//     }
+// },
+
+// ));
